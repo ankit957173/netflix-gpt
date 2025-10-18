@@ -7,6 +7,7 @@ import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { BG_URL } from '../utils/constants';
 
 const Login = () => {
     const [isSignInForm, setIsSignInForm] = React.useState(true);
@@ -66,7 +67,7 @@ const Login = () => {
 
     return (
         <div className="relative min-h-screen bg-cover bg-center bg-no-repeat" style={{
-            backgroundImage: `url('https://assets.nflxext.com/ffe/siteui/vlv3/d482944d-eab4-4a64-89c9-a07a508a6e42/web/IN-en-20250929-TRIFECTA-perspective_4cf0c8a1-bd35-4d72-a49f-165021531dde_large.jpg')`
+            backgroundImage: `url(${BG_URL})`
         }}>
             <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 

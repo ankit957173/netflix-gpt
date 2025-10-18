@@ -12,4 +12,10 @@ export const POPULAR_URL = 'https://api.themoviedb.org/3/movie/popular?language=
 export const TOP_RATED_URL = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
 export const UPCOMING_URL = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
 
-export const IMAGE_CDN_URL="https://image.tmdb.org/t/p/w500/"
+export const IMAGE_CDN_URL = "https://image.tmdb.org/t/p/w500/"
+export const BG_URL="https://assets.nflxext.com/ffe/siteui/vlv3/d482944d-eab4-4a64-89c9-a07a508a6e42/web/IN-en-20250929-TRIFECTA-perspective_4cf0c8a1-bd35-4d72-a49f-165021531dde_large.jpg"
+export const SUPPORTED_LANGUAGES = [
+  { identifier: "en", name: "English" },
+  { identifier: "hindi", name: "Hindi" },
+  { identifier: "spanish", name: "Spanish" },
+]
