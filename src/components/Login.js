@@ -66,14 +66,14 @@ const Login = () => {
     }
 
     return (
-        <div className="relative min-h-screen bg-cover bg-center bg-no-repeat" style={{
+        <div className=" min-h-screen bg-cover bg-center bg-no-repeat" style={{
             backgroundImage: `url(${BG_URL})`
         }}>
-            <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+           
 
             <Header />
 
-            <form onSubmit={(e)=>e.preventDefault()} className="relative w-11/12 sm:w-8/12 md:w-6/12 lg:w-4/12 xl:w-3/12 p-8 sm:p-10 md:p-12 mt-20 mx-auto bg-black bg-opacity-80 rounded-lg text-white">
+            <form onSubmit={(e)=>e.preventDefault()} className=" w-11/12 sm:w-8/12 md:w-6/12 lg:w-4/12 xl:w-3/12 p-8 sm:p-10 md:p-12 mt-20 mx-auto bg-black bg-opacity-80 rounded-lg text-white">
                 <h1 className="font-bold my-4 text-3xl">{isSignInForm ? "Sign In" : "Sign Up"}</h1>
 
                 {!isSignInForm && (
