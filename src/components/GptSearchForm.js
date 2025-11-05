@@ -1,48 +1,21 @@
 import React, { useRef } from 'react'
-import { GoogleGenAI } from "@google/genai";
 import langConstants from '../utils/langConstants'
-import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { addSuggestedMovies } from '../utils/gptSlice'
-import {API_OPTIONS, GEMINI_API_KEY} from '../utils/constants'
+import useGptForm from '../hooks/useGptForm';
 const GptSearchForm = () => {
-  const language = useSelector((store) => store.config.language);
-  const searchInputRef = useRef(null);
-  const dispatch = useDispatch();
-  const searchMovie = async (movie) => {
-    
-    const data = await fetch(`https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&page=1`, API_OPTIONS);
-    const jsonData = await data.json();
-    return jsonData.results;
-  }
-  const handleSearchClick=async()=>{
-    console.log(searchInputRef.current.value);
-    const gptQuery="Act as a movie recommendation system and suggest some movies for the query: " + searchInputRef.current.value+" top 5 movies should be returned and result should be in comma separated values";
-    const ai = new GoogleGenAI({apiKey:GEMINI_API_KEY});
-    // const gptResults = await openai.chat.completions.create({
-    // model: "gpt-3.5-turbo",
-    // messages: [{role: "user", content: gptQuery}],)}
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
-      contents:  gptQuery,
-    })  ;
- const movies=response?.candidates[0]?.content?.parts[0]?.text.split(", ");
-    console.log(movies)
-    //no
-    const promiseArray = movies.map(movie => searchMovie(movie.trim()));
-    const allMovieResults = await Promise.all(promiseArray);
-    console.log(allMovieResults);
-    dispatch(addSuggestedMovies({movieNames:movies,suggestedMovies:allMovieResults.flat()}));
-  }
+      const language = useSelector((store) => store.config.language);
+  const searchInputRef = useRef(null);  
+  const { handleSearchClick } = useGptForm(searchInputRef);
+  
   return (
-      <div className='pt-[10%] flex justify-center'>
-          <form className='w-1/2 bg-black grid grid-cols-12' onSubmit={(e)=>e.preventDefault()}>
+      <div className=' flex justify-center'>
+          <form className='w-full md:w-1/2 bg-black bg-opacity-80 grid grid-cols-12 rounded-lg overflow-hidden' onSubmit={(e)=>e.preventDefault()}>
 
         <input type="text"
             ref={searchInputRef}
-                  className='p-4 m-4 col-span-9'
+                  className='p-3 md:p-4 m-2 md:m-4 col-span-9 bg-gray-900 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 placeholder-gray-400'
                   placeholder={langConstants[language].searchPlaceholder} />
-        <button className='col-span-3 p-4 m-4 bg-red-700 text-white rounded-lg'
+        <button className='col-span-3 p-3 md:p-4 m-2 md:m-4 bg-red-700 hover:bg-red-800 text-white rounded-lg font-semibold transition-colors duration-200'
         onClick={handleSearchClick}>{langConstants[language].search}</button>
               </form>
         

@@ -11,7 +11,7 @@ export const NOW_PLAYING_URL = 'https://api.themoviedb.org/3/movie/now_playing?p
 export const POPULAR_URL = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
 export const TOP_RATED_URL = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
 export const UPCOMING_URL = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
-
+export const DETAILS_URL = 'https://api.themoviedb.org/3/movie/';
 export const IMAGE_CDN_URL = "https://image.tmdb.org/t/p/w500/"
 export const BG_URL="https://assets.nflxext.com/ffe/siteui/vlv3/d482944d-eab4-4a64-89c9-a07a508a6e42/web/IN-en-20250929-TRIFECTA-perspective_4cf0c8a1-bd35-4d72-a49f-165021531dde_large.jpg"
 export const SUPPORTED_LANGUAGES = [
@@ -20,5 +20,4 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "spanish", name: "Spanish" },
 ]
 
-export const OPENAI_API_KEY = "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";
-export const GEMINI_API_KEY = "AIzaSyAUaxddqgP0sN4wb-iBofyk4Sq57q6ZzdQ";
+export const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY;

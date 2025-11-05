@@ -1,5 +1,6 @@
 import  Login  from './Login'
 import Browse  from './Browse'
+import DetailsPage from './DetailsPage'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { useDispatch } from 'react-redux'
@@ -15,6 +16,10 @@ const Body = () => {
         {
             path: "/browse",
             element: <Browse />,
+        },
+        {
+            path: "/movie/:movieId",
+            element: <DetailsPage />,
         }
     ]);
   
